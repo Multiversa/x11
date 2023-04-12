@@ -45,8 +45,8 @@ module.exports = async function ({ directus }) {
       (formattedMoreArticle) => {
         return {
           ...formattedMoreArticle,
-          publish_date: formatRelativeTime(
-            new Date(formattedMoreArticle.publish_date)
+          date_published: formatRelativeTime(
+            new Date(formattedMoreArticle.date_published)
           ),
         };
       }
@@ -54,7 +54,7 @@ module.exports = async function ({ directus }) {
 
     articles[index] = {
       ...article,
-      publish_date: formatRelativeTime(new Date(article.publish_date)),
+      date_published: formatRelativeTime(new Date(article.date_published)),
       moreArticles: formattedMoreArticles,
     };
   }

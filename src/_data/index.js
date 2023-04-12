@@ -5,12 +5,12 @@ const {
 module.exports = async function ({ directus }) {
   const response = await directus.items("articles").readByQuery({
     fields: ["*", "author.avatar", "author.first_name", "author.last_name"],
-    sort: "-publish_date",
+    sort: "-date_published",
   });
   const formattedArticles = response.data.map((article) => {
     return {
       ...article,
-      publish_date: formatRelativeTime(new Date(article.publish_date)),
+      date_published: formatRelativeTime(new Date(article.date_published)),
     };
   });
   const [hero, ...articles] = formattedArticles;
