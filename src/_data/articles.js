@@ -25,7 +25,7 @@ function formatRelativeTime(fromDate, toDate) {
 
 module.exports = async function ({ directus }) {
   let response = await directus.items("articles").readByQuery({
-    fields: ["*", "author.avatar", "author.first_name", "author.last_name"],
+    fields: ["*", "user_created.avatar", "user_created.first_name", "user_created.last_name"],
     filter: { status: { _eq: "published" } },
     limit: -1,
   });
@@ -34,7 +34,7 @@ module.exports = async function ({ directus }) {
 
   for (const [index, article] of Object.entries(articles)) {
     const moreArticlesResponse = await directus.items("articles").readByQuery({
-      fields: ["*", "author.avatar", "author.first_name", "author.last_name"],
+      fields: ["*", "user_created.avatar", "user_created.first_name", "user_created.last_name"],
       filter: {
         _and: [{ id: { _neq: article.id } }, { status: { _eq: "published" } }],
       },
