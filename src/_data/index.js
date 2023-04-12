@@ -1,6 +1,6 @@
 const {
   formatRelativeTime,
-} = require("../../../shared/utils/format-relative-time.cjs");
+} = require("../_11ty/utils/format-relative-time.cjs");
 
 module.exports = async function ({ directus }) {
   const response = await directus.items("articles").readByQuery({
